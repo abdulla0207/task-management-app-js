@@ -1,0 +1,19 @@
+{
+  "name": "task-management-app",
+  "version": "1.0.0",
+  "description": "Task management app package file",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulla0207/task-management-app-js.git"
+  },
+  "author": "Abdulla Ermatov (00011270)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdulla0207/task-management-app-js/issues"
+  },
+  "homepage": "https://github.com/abdulla0207/task-management-app-js#readme"
+}
