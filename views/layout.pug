@@ -5,17 +5,18 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="static/styles/style.css")
+        link(rel="icon", href="static/images/page-logo.png")
         title Task Manager
     body 
         header 
             h1.logo_h1 
-                a.logo_h1_link(href="/") MTask App
+                a.logo_h1_link(href="/") Task Manager
             nav.navigation 
                 ul.nav_links
                     li 
                         a.home_link(href="/") Home
                     li 
-                        a.workspace_link(href="#") Workspaces
+                        a.workspace_link(href="/tasks") Tasks
 
         block content
                       

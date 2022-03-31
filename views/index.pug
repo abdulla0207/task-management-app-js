@@ -1,7 +1,19 @@
 extends layout.pug 
 
 block content 
+
     h1.heading Task Management 
+    h2 Choose the Priority of a Task:
+
     .block
-        h2.board Boards: 
-        img.add_card(src="static/images/plus-icon.png", alt="Add")
+
+        form(action='/' method='POST')
+            select.priority(name='priority-category')
+                each pr in priorities 
+                    option(value = pr.priority_id)= pr.title 
+
+                    
+            p.title-p Title
+            input.description(type="description" name="code")
+            textarea.task-name(name="name" cols="30" rows="2" class = received == 'no' ? 'input-err' : '')
+            button.btn-add Add 

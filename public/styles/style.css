@@ -27,7 +27,21 @@ header a {
 }
 .nav_links li a {
   transition: all 1s ease 0s;
-  padding: 20px 40px;
+  padding: 20px 20px;
+  margin: auto 5px;
+}
+@media screen and (max-width: 750px) {
+  .logo_h1 {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .logo_h1 {
+    font-size: 15px;
+  }
+  .nav_links li a {
+    font-size: 10px;
+  }
 }
 .nav_links li a:hover {
   color: rgb(255, 255, 255);
@@ -40,12 +54,29 @@ header a {
   text-align: center;
 }
 .block {
-  margin: 100px auto;
-  width: 70%;
-  background-color: antiquewhite;
+  width: 60%;
+  height: 500px;
+  background-color: aqua;
+  margin: 0 auto;
 }
-.add_card {
-  cursor: pointer;
-  width: 200px;
-  height: 200px;
+h2{
+  margin-top: 20px;
+}
+.importance{
+  padding: 5px 5px;
+  display: block;
+  width: 100%;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.task-name{
+  width: 100%;
+  height: 300px;
+}
+.description{
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding: 5px;
+  width: 100%;
 }

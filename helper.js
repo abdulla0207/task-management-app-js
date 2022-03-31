@@ -1,0 +1,6 @@
+module.exports.priorities = [
+    { priority_id: 0, title: 'Priority 1' },
+    { priority_id: 1, title: 'Priority 2' },
+    { priority_id: 2, title: 'Priority 3' },
+    { priority_id: 3, title: 'Priority 4' },
+]
