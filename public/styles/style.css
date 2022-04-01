@@ -52,31 +52,60 @@ header a {
   margin-top: 50px;
   font-size: 3em;
   text-align: center;
+  margin-bottom: 30px;
 }
 .block {
   width: 60%;
-  height: 500px;
-  background-color: aqua;
+  height: 580px;
   margin: 0 auto;
+  position: relative;
 }
-h2{
-  margin-top: 20px;
-}
-.importance{
+.priority{
   padding: 5px 5px;
   display: block;
   width: 100%;
   font-size: 25px;
   border-radius: 10px;
 }
-.task-name{
+.task-descr{
   width: 100%;
   height: 300px;
+  font-size: 25px;
 }
-.description{
+.title-input{
   align-items: center;
   margin-bottom: 20px;
   font-size: 20px;
   padding: 5px;
   width: 100%;
+}
+.btn-add{
+  position: absolute;
+  font-size: 30px;
+  padding: 15px 40px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 35%;
+}
+.title-p, .description-p{
+  font-size: 25px;
+}
+.task-message{
+  width: 500px;
+  margin: 20px auto;
+  font-size: 1.7em;
+  text-transform: uppercase;
+}
+.redirect-to-tasks-page{
+  margin-left: 20px;
+  font-size: 1.4em;
+}
+.task-cards{
+  display: block;
+  width: 317px;
+  margin-top: 20px;
+  padding: 30px;
+  background-color: white;
+  border: 3px solid rgb(36, 106, 235);
+  text-align: center;
 }

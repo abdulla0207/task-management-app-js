@@ -4,7 +4,7 @@
   "description": "Task management app package file",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/abdulla0207/task-management-app-js#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

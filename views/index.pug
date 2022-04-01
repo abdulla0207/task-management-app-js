@@ -3,17 +3,20 @@ extends layout.pug
 block content 
 
     h1.heading Task Management 
-    h2 Choose the Priority of a Task:
 
     .block
-
         form(action='/' method='POST')
-            select.priority(name='priority-category')
+            p.title-p Title:
+            input.title-input(type="description" name="title")
+            p.description-p Description:
+            textarea.task-descr(name="description" cols="30" rows="2" class = received == 'no' ? 'input-err' : '')
+            select.priority(name='priority')
                 each pr in priorities 
                     option(value = pr.priority_id)= pr.title 
-
-                    
-            p.title-p Title
-            input.description(type="description" name="code")
-            textarea.task-name(name="name" cols="30" rows="2" class = received == 'no' ? 'input-err' : '')
             button.btn-add Add 
+
+    if answer == 'yes'
+        p.task-message Task Was Created Successfully 
+        p.redirect-to-tasks-page You can check your tasks 
+            a.link(href="/tasks") here 
+            span.continue or from navigation bar Tasks
