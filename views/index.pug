@@ -7,9 +7,13 @@ block content
     .block
         form(action='/' method='POST')
             p.title-p Title:
-            input.title-input(type="description" name="title")
+                if title <= 0
+                    span.error Fill the input
+            input.title-input(type="description" name="title" class = title <= 0 ? 'title-input-error' : '')
             p.description-p Description:
-            textarea.task-descr(name="description" cols="30" rows="2" class = received == 'no' ? 'input-err' : '')
+                if description <= 0
+                    span.error Fill the input
+            textarea.task-descr(name="description" cols="30" rows="2" class = description <= 0 ? 'descr-error' : '')
             select.priority(name='priority')
                 each pr in priorities 
                     option(value = pr.priority_id)= pr.title 
@@ -20,3 +24,6 @@ block content
         p.redirect-to-tasks-page You can check your tasks 
             a.link(href="/tasks") here 
             span.continue or from navigation bar Tasks
+        div.task-cards
+            
+

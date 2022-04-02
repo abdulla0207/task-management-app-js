@@ -7,6 +7,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #e8e8f1;
   width: 100%;
+  transition: all 1s ease 0s;
 }
 header {
   display: flex;
@@ -107,5 +108,12 @@ header a {
   padding: 30px;
   background-color: white;
   border: 3px solid rgb(36, 106, 235);
+  border-radius: 10px;
   text-align: center;
+}
+.error{
+  color: red;
+}
+.descr-error, .title-input-error{
+  border: 2px solid red;
 }

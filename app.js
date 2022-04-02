@@ -17,11 +17,7 @@ app.use('/static', express.static('public'))
 
 // Loads the homepage
 app.get('/', (req, res) => {
-    if (req.query.received == 'yes') {
-        res.render('index', { priorities: PRIORITIES, answer: req.query.received })
-    } else {
-        res.render('index', { priorities: PRIORITIES })
-    }
+    res.render('index', { priorities: PRIORITIES, answer: req.query.received, description: req.query.description, title: req.query.title })
 })
 // When add button clicked, it saves the information of inputs
 // to tasks.json file
@@ -29,7 +25,7 @@ app.post('/', (req, res) => {
     let task_form = req.body
 
     if (validate.isEmpty(task_form.title) || validate.isEmpty(task_form.description)) {
-        res.redirect('/?received=no')
+        res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}`)
     } else {
         let rawdata = fs.readFileSync('tasks.json')
         let data = JSON.parse(rawdata);
@@ -41,7 +37,7 @@ app.post('/', (req, res) => {
         }
         data.push(task)
         fs.writeFileSync('tasks.json', JSON.stringify(data))
-        res.redirect(`/?received=yes&priority=${task_form.priority}`)
+        res.redirect('/?answer=yes')
     }
 })
 // Loads the task page
@@ -51,4 +47,3 @@ app.get('/tasks', (req, res) => {
 
 // Creates a server and console logs the port number
 app.listen(port, () => { console.log(`Server is running on port ${port}`) })
-
