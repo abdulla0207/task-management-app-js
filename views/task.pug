@@ -1,4 +1,6 @@
 extends layout.pug 
 
 block content 
-    h1 TASKS
+    each task in tasks
+        div.task-cards
+            p.card-title= task.title

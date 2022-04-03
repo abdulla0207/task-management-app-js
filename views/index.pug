@@ -14,6 +14,9 @@ block content
                 if description <= 0
                     span.error Fill the input
             textarea.task-descr(name="description" cols="30" rows="2" class = description <= 0 ? 'descr-error' : '')
+            p.priority-text Choose the priority of the task:
+                if priority == 0
+                    span.error Choose the priority
             select.priority(name='priority')
                 each pr in priorities 
                     option(value = pr.priority_id)= pr.title 
@@ -24,6 +27,5 @@ block content
         p.redirect-to-tasks-page You can check your tasks 
             a.link(href="/tasks") here 
             span.continue or from navigation bar Tasks
-        div.task-cards
             
 
