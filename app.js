@@ -14,7 +14,7 @@ let data = JSON.parse(rawdata);
 app.set('view engine', 'pug')
 
 app.use(express.urlencoded({ extended: true }))
-app.use('/static', express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Loads the homepage
 app.get('/', (req, res) => {
@@ -35,6 +35,7 @@ app.post('/', (req, res) => {
         res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
     } else {
         let task = {
+            id: data.length,
             title: task_form.title,
             description: task_form.description,
             priority: task_form.priority
@@ -46,7 +47,19 @@ app.post('/', (req, res) => {
 })
 // Loads the task page
 app.get('/tasks', (req, res) => {
+    console.log(data)
     res.render('task', { tasks: data })
+})
+
+app.get('/edit/:id', (req, res) => {
+    let id = req.params.id
+    let task = data[id]
+    res.render('edit', {task: task, priorities: PRIORITIES})
+})
+
+app.post('/update/:id', async(req, res) =>{
+    let id = req.params.id
+    let 
 })
 
 // Creates a server and console logs the port number
