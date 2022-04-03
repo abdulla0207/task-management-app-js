@@ -1,6 +1,14 @@
 extends layout.pug 
 
-block content 
-    each task in tasks
-        div.task-cards
-            p.card-title= task.title
+block content
+    h1.task-header Tasks
+    div.card-block
+        each task in tasks
+            section.task-cards
+                p.card-title= task.title
+                p.card-description= task.description 
+                p.card-priority Priority #{task.priority}
+                form.action
+                    button.update-btn Update 
+                    button.finish-btn Finish 
+

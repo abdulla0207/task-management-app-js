@@ -105,8 +105,9 @@ header a {
   display: block;
   width: 317px;
   margin-top: 20px;
+  margin-left: 20px;
   padding: 30px;
-  background-color: white;
+  background-color: rgb(241, 235, 235);
   border: 3px solid rgb(36, 106, 235);
   border-radius: 10px;
   text-align: center;
@@ -119,5 +120,47 @@ header a {
 }
 .card-title{
   font-size: 2em;
-  
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.card-description{
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+.card-priority{
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+.update-btn, .finish-btn{
+  background-color: rgb(95, 155, 212);
+  border: none;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.finish-btn{
+  margin-left: 5px;
+  background-color: rgb(143, 146, 146);
+}
+.card-block{
+  display: flex;
+  width: 85%;
+  margin: 60px auto;
+  flex-wrap: wrap;
+}
+.task-header{
+  margin-top: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-family: 'Courier New', Courier, monospace;
+}
+@media screen and (min-width: 1000px) {
+  .card-block{
+    width: 55%;
+  }
 }

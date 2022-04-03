@@ -34,8 +34,6 @@ app.post('/', (req, res) => {
     if (validate.isEmpty(task_form.title) || validate.isEmpty(task_form.description)) {
         res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
     } else {
-
-        console.log(data)
         let task = {
             title: task_form.title,
             description: task_form.description,

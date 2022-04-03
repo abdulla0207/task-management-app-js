@@ -1,6 +1,3 @@
-// module.exports.isFileEmpty(jsonFile){
-//     return Object.keys(jsonFile).length === 0
-// }
 
 module.exports.priorities = [
     { priority_id: 0, title: '' },
