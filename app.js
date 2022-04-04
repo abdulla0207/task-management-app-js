@@ -47,7 +47,6 @@ app.post('/', (req, res) => {
 })
 // Loads the task page
 app.get('/tasks', (req, res) => {
-    console.log(data)
     res.render('task', { tasks: data })
 })
 
@@ -58,8 +57,14 @@ app.get('/edit/:id', (req, res) => {
 })
 
 app.post('/update/:id', async(req, res) =>{
-    let id = req.params.id
-    let 
+    let id = req.params.id;
+
+    data[id]["title"] = req.body.title;
+    data[id]["description"] = req.body.description;
+    data[id]["priority"] = req.body.priority;
+
+    fs.writeFileSync('tasks.json', (JSON.stringify(data)))
+    res.redirect('/?updated=true')
 })
 
 // Creates a server and console logs the port number

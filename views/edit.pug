@@ -6,15 +6,15 @@ block content
             p.title-p Title:
                 if title <= 0
                     span.error Fill the input
-            input.title-input(type="description" name="title")
+            input.title-input(type="text" name="title" value= task.title)
             p.description-p Description:
                 if description <= 0
                     span.error Fill the input
-            textarea.task-descr(name="description" cols="30" rows="2")
+            textarea.task-descr(name="description" cols="30" rows="2")= task.description
             p.priority-text Choose the priority of the task:
                 if priority == 0
                     span.error Choose the priority
             select.priority(name='priority')
                 each pr in priorities 
                     option(value = pr.priority_id)= pr.title 
-            button.btn-add Add 
+            button.btn-update Update

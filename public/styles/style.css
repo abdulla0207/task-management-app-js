@@ -121,14 +121,13 @@ header a {
 .card-title{
   font-size: 2em;
   margin-bottom: 10px;
-  text-transform: uppercase;
 }
 .card-description{
   font-size: 1.2em;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 .card-priority{
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 1.3em;
   font-weight: 600;
 }
@@ -141,8 +140,10 @@ header a {
   font-size: 13px;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
-button.finish-btn{
+a.finish-btn{
   margin-left: 5px;
   background-color: rgb(143, 146, 146);
 }

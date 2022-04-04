@@ -8,7 +8,7 @@ block content
                 p.card-title= task.title
                 p.card-description= task.description 
                 p.card-priority Priority #{task.priority}
-                form.action
+                .action
                     a.update-btn(href="/edit/"+task.id) Update 
                     a.finish-btn(href="/finish/"+task.id) Finish 
 
