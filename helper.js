@@ -1,4 +1,6 @@
-
+module.exports.uniqueId = ()=>{
+    return Math.random().toString(36).substring(2, 9)
+}
 module.exports.priorities = [
     { priority_id: 0, title: '' },
     { priority_id: 1, title: 'Priority 1' },

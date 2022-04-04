@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const validate = require('validate.js')
 const PRIORITIES = require('./helper').priorities
+const uniqueId = require('./helper').uniqueId()
 
 // Port number
 const port = 3000
@@ -35,7 +36,7 @@ app.post('/', (req, res) => {
         res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
     } else {
         let task = {
-            id: data.length,
+            id: uniqueId,
             title: task_form.title,
             description: task_form.description,
             priority: task_form.priority
@@ -50,22 +51,15 @@ app.get('/tasks', (req, res) => {
     res.render('task', { tasks: data })
 })
 
-app.get('/edit/:id', (req, res) => {
+app.get('/finish/:id', (req, res)=>{
     let id = req.params.id
-    let task = data[id]
-    res.render('edit', {task: task, priorities: PRIORITIES})
+    let tasks = JSON.parse(fs.readFileSync('tasks.json'))
+    const filter = tasks.filter(task => task.id != id)
+
+    fs.writeFile('tasks.json', JSON.stringify(filter), (err)=>{
+        if(err) throw err
+        res.render('task', {tasks: filter, finish: true})
+    })
 })
-
-app.post('/update/:id', async(req, res) =>{
-    let id = req.params.id;
-
-    data[id]["title"] = req.body.title;
-    data[id]["description"] = req.body.description;
-    data[id]["priority"] = req.body.priority;
-
-    fs.writeFileSync('tasks.json', (JSON.stringify(data)))
-    res.redirect('/?updated=true')
-})
-
 // Creates a server and console logs the port number
 app.listen(port, () => { console.log(`Server is running on port ${port}`) })

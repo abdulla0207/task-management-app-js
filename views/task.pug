@@ -2,6 +2,8 @@ extends layout.pug
 
 block content
     h1.task-header Tasks
+    if finish
+        p.error Task is removed
     div.card-block
         each task in tasks
             section.task-cards
