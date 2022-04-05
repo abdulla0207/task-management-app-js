@@ -58,16 +58,16 @@ app.get('/edit/:editId', (req, res) => {
     res.render('edit', { task: task, priorities: PRIORITIES.slice(1) })
 })
 
-app.post('/update/:editId', (req, res) => {
-    let editId = req.params.editId;
+// app.post('/update/:editId', (req, res) => {
+//     let editId = req.params.editId;
 
-    data[editId]["title"] = req.body.title;
-    data[editId]["description"] = req.body.description;
-    data[editId]["priority"] = req.body.priority;
+//     data[editId]["title"] = req.body.title;
+//     data[editId]["description"] = req.body.description;
+//     data[editId]["priority"] = req.body.priority;
 
-    fs.writeFileSync('tasks.json', (JSON.stringify(data)))
-    res.redirect('/?updated=true')
-})
+//     fs.writeFileSync('tasks.json', (JSON.stringify(data)))
+//     res.redirect('/?updated=true')
+// })
 
 app.get('/:id/finish', (req, res) => {
     let id = req.params.id
