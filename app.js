@@ -7,7 +7,7 @@ const PRIORITIES = require('./helper').priorities
 const uniqueId = require('./helper').uniqueId()
 
 // Port number
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 let rawdata = fs.readFileSync('tasks.json')
 let data = JSON.parse(rawdata);
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     let task_form = req.body
 
-    if (validate.isEmpty(task_form.title) || validate.isEmpty(task_form.description)) {
+    if (validate.isEmpty(task_form.title.trim()) || validate.isEmpty(task_form.description.trim())) {
         res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
     } else {
         let task = {
@@ -56,7 +56,7 @@ app.get('/edit/:editId', (req, res) => {
     let editId = req.params.editId
     let task = data[editId]
     console.log(task)
-    res.render('edit', { task: task, priorities: PRIORITIES })
+    res.render('edit', { task: task, priorities: PRIORITIES.slice(1) })
 })
 
 app.post('/update/:editId', async (req, res) => {
@@ -82,4 +82,4 @@ app.get('/:id/finish', (req, res) => {
     })
 })
 // Creates a server and console logs the port number
-app.listen(port, () => { console.log(`Server is running on port ${port}`) })
+app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`) })
