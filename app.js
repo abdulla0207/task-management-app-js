@@ -18,35 +18,36 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Loads the homepage
-app.get('/', (req, res) => {
-    res.render('index', {
-        priorities: PRIORITIES,
-        answer: req.query.answer,
-        description: req.query.description,
-        title: req.query.title,
-        priority: req.query.priority
+app.route('/')
+    .get((req, res) => {
+        res.render('index', {
+            priorities: PRIORITIES,
+            answer: req.query.answer,
+            description: req.query.description,
+            title: req.query.title,
+            priority: req.query.priority
+        })
     })
-})
-// When add button clicked, it saves the information of inputs
-// to tasks.json file
-app.post('/', (req, res) => {
-    let task_form = req.body
+    // When add button clicked, it saves the information of inputs
+    // to tasks.json file
+    .post((req, res) => {
+        let task_form = req.body
 
-    if (validate.isEmpty(task_form.title.trim()) || validate.isEmpty(task_form.description.trim())) {
-        res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
-    } else {
-        let task = {
-            editId: data.length,
-            id: uniqueId,
-            title: task_form.title,
-            description: task_form.description,
-            priority: task_form.priority
+        if (validate.isEmpty(task_form.title.trim()) || validate.isEmpty(task_form.description.trim())) {
+            res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
+        } else {
+            let task = {
+                editId: data.length,
+                id: uniqueId,
+                title: task_form.title,
+                description: task_form.description,
+                priority: task_form.priority
+            }
+            data.push(task)
+            fs.writeFileSync('tasks.json', JSON.stringify(data))
+            res.redirect('/?answer=yes')
         }
-        data.push(task)
-        fs.writeFileSync('tasks.json', JSON.stringify(data))
-        res.redirect('/?answer=yes')
-    }
-})
+    })
 // Loads the task page
 app.get('/tasks', (req, res) => {
     res.render('task', { tasks: data })
