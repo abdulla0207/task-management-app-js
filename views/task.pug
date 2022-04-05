@@ -8,6 +8,10 @@ block content
                 p.card-title= task.title
                 p.card-description= task.description 
                 p.card-priority Priority #{task.priority}
+                if finish 
+                    p DONE
+                else 
+                    p UNDONE
                 .action
                     a.update-btn(href="/edit/"+task.editId) Update 
                     a.finish-btn(href=`/${task.id}/finish`) Finish 

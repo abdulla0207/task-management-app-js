@@ -77,8 +77,7 @@ app.get('/:id/finish', (req, res) => {
         let task = tasks.filter(t => t.id != id)
         fs.writeFile('tasks.json', JSON.stringify(task), (error) => {
             if (error) throw error
-
-            res.render('task', { tasks: task, finish: true })
+            res.render('index', { tasks: task, finish: true, priorities: PRIORITIES })
         })
     })
 })
