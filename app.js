@@ -55,7 +55,6 @@ app.get('/tasks', (req, res) => {
 app.get('/edit/:editId', (req, res) => {
     let editId = req.params.editId
     let task = data[editId]
-    console.log(task)
     res.render('edit', { task: task, priorities: PRIORITIES.slice(1) })
 })
 
@@ -72,7 +71,6 @@ app.post('/update/:editId', async (req, res) => {
 
 app.get('/:id/finish', (req, res) => {
     let id = req.params.id
-    console.log
     let task = data.filter(t => t.id != id)
 
     fs.writeFile('tasks.json', JSON.stringify(task), (error) => {

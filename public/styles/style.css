@@ -131,7 +131,7 @@ header a {
   font-size: 1.3em;
   font-weight: 600;
 }
-.update-btn, .finish-btn{
+.update-btn, .finish-btn, .btn-update{
   background-color: rgb(95, 155, 212);
   border: none;
   padding: 10px 27px;
