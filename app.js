@@ -78,7 +78,7 @@ app.get('/:id/finish', (req, res) => {
         fs.writeFile('tasks.json', JSON.stringify(task), (error) => {
             if (error) throw error
 
-            res.render('index', { tasks: task, finish: true, priorities: PRIORITIES })
+            res.render('task', { tasks: task, finish: true })
         })
     })
 })
