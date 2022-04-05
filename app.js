@@ -55,7 +55,7 @@ app.get('/tasks', (req, res) => {
 app.get('/edit/:editId', (req, res) => {
     let editId = req.params.editId
     let task = data[editId]
-    res.render('edit', { task: task, priorities: PRIORITIES.slice(1) })
+    res.render('edit', { task: task, priorities: PRIORITIES })
 })
 
 // app.post('/update/:editId', (req, res) => {
