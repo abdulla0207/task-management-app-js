@@ -58,7 +58,7 @@ app.get('/edit/:editId', (req, res) => {
     res.render('edit', { task: task, priorities: PRIORITIES.slice(1) })
 })
 
-app.post('/update/:editId', async (req, res) => {
+app.post('/update/:editId', (req, res) => {
     let editId = req.params.editId;
 
     data[editId]["title"] = req.body.title;
@@ -71,12 +71,16 @@ app.post('/update/:editId', async (req, res) => {
 
 app.get('/:id/finish', (req, res) => {
     let id = req.params.id
-    let task = data.filter(t => t.id != id)
-
-    fs.writeFile('tasks.json', JSON.stringify(task), (error) => {
+    fs.readFile('tasks.json', (error, data) => {
         if (error) throw error
+        let tasks = JSON.parse(data)
 
-        res.render('index', { tasks: task, finish: true, priorities: PRIORITIES })
+        let task = tasks.filter(t => t.id != id)
+        fs.writeFile('tasks.json', JSON.stringify(task), (error) => {
+            if (error) throw error
+
+            res.render('index', { tasks: task, finish: true, priorities: PRIORITIES })
+        })
     })
 })
 // Creates a server and console logs the port number
