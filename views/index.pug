@@ -3,7 +3,8 @@ extends layout.pug
 block content 
 
     h1.heading Task Management 
-
+    if finish 
+        p.removed Task is Removed
     .block
         form(action='/' method='POST')
             p.title-p Title:

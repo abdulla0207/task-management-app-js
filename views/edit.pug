@@ -2,7 +2,7 @@ extends layout.pug
 
 block content 
     .block
-        form(action=`/update/${task.id}` method="POST")
+        form(action=`/update/${task.editId}` method="POST")
             p.title-p Title:
             input.title-input(type="text" name="title" value= task.title)
             p.description-p Description:

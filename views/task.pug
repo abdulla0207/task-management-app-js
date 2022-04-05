@@ -2,8 +2,6 @@ extends layout.pug
 
 block content
     h1.task-header Tasks
-    if finish
-        p.error Task is removed
     div.card-block
         each task in tasks
             section.task-cards
@@ -11,6 +9,6 @@ block content
                 p.card-description= task.description 
                 p.card-priority Priority #{task.priority}
                 .action
-                    a.update-btn(href="/edit/"+task.id) Update 
-                    a.finish-btn(href="/finish/"+task.id) Finish 
+                    a.update-btn(href="/edit/"+task.editId) Update 
+                    a.finish-btn(href=`/${task.id}/finish`) Finish 
 

@@ -165,3 +165,8 @@ a.finish-btn{
     width: 55%;
   }
 }
+.removed{
+  color: red;
+  text-align: center;
+  font-size: 1.3em;
+}

@@ -36,6 +36,7 @@ app.post('/', (req, res) => {
         res.redirect(`/?answer=no&description=${task_form.description.length}&title=${task_form.title.length}&priority=${task_form.priority}`)
     } else {
         let task = {
+            editId: data.length,
             id: uniqueId,
             title: task_form.title,
             description: task_form.description,
@@ -51,14 +52,33 @@ app.get('/tasks', (req, res) => {
     res.render('task', { tasks: data })
 })
 
-app.get('/finish/:id', (req, res)=>{
-    let id = req.params.id
-    let tasks = JSON.parse(fs.readFileSync('tasks.json'))
-    const filter = tasks.filter(task => task.id != id)
+app.get('/edit/:editId', (req, res) => {
+    let editId = req.params.editId
+    let task = data[editId]
+    console.log(task)
+    res.render('edit', { task: task, priorities: PRIORITIES })
+})
 
-    fs.writeFile('tasks.json', JSON.stringify(filter), (err)=>{
-        if(err) throw err
-        res.render('task', {tasks: filter, finish: true})
+app.post('/update/:editId', async (req, res) => {
+    let editId = req.params.editId;
+
+    data[editId]["title"] = req.body.title;
+    data[editId]["description"] = req.body.description;
+    data[editId]["priority"] = req.body.priority;
+
+    fs.writeFileSync('tasks.json', (JSON.stringify(data)))
+    res.redirect('/?updated=true')
+})
+
+app.get('/:id/finish', (req, res) => {
+    let id = req.params.id
+    console.log
+    let task = data.filter(t => t.id != id)
+
+    fs.writeFile('tasks.json', JSON.stringify(task), (error) => {
+        if (error) throw error
+
+        res.render('index', { tasks: task, finish: true, priorities: PRIORITIES })
     })
 })
 // Creates a server and console logs the port number
