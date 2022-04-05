@@ -4,6 +4,7 @@
   "description": "Task management app package file",
   "main": "app.js",
   "scripts": {
+    "start": "app.js",
     "devStart": "nodemon app.js"
   },
   "repository": {
